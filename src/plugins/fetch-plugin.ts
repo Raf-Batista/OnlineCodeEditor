@@ -33,9 +33,9 @@ export const fetchPlugin = (inputCode: string) => {
             });
             
             const data = await response.text();
-    
+            const loader = args.path.match(/.css/) ? 'css' : 'jsx';
             const result: esbuild.OnLoadResult = {
-               loader: 'jsx',
+               loader: loader,
                contents: data,
                resolveDir: new URL('./', response.url).pathname
              };
