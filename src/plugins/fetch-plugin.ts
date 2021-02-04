@@ -11,6 +11,7 @@ export const fetchPlugin = (inputCode: string) => {
         name: 'fetch-plugin',
         setup(build: esbuild.PluginBuild) {
 
+        // load inputed code
         build.onLoad({ filter: /(^index\.js$)/  }, () => {
           return {
             loader: 'jsx',
@@ -18,16 +19,17 @@ export const fetchPlugin = (inputCode: string) => {
           };
         });
 
-      build.onLoad({ filter: /.*/ }, async (args: any) => {
-        const cachedResult = await fileCache.getItem<esbuild.OnLoadResult>(args.path)
-    
-        if (cachedResult) {
-          return cachedResult;
-        };
-      })
-
-        build.onLoad({ filter: /.css$/ }, async (args: any) => {
+        // if results are cached, load the cache result
+        build.onLoad({ filter: /.*/ }, async (args: any) => {
+          const cachedResult = await fileCache.getItem<esbuild.OnLoadResult>(args.path)
       
+          if (cachedResult) {
+            return cachedResult;
+          };
+        })
+
+        // if loading css, remove escape characters and apply the style using JavaScript
+        build.onLoad({ filter: /.css$/ }, async (args: any) => {
             const response: any = await fetch(args.path, {
               headers: {
                 'Content-Type': 'text/plain',
@@ -37,7 +39,6 @@ export const fetchPlugin = (inputCode: string) => {
             
             const data = await response.text();
             
- 
             const escaped = data
             .replace(/\n/g, '')
             .replace(/"/g, '\\"')
@@ -49,6 +50,7 @@ export const fetchPlugin = (inputCode: string) => {
               style.innerText = '${escaped}'; 
               document.head.appendChild(style);
             `;
+
             const result: esbuild.OnLoadResult = {
                loader: 'jsx',
                contents,
@@ -58,8 +60,9 @@ export const fetchPlugin = (inputCode: string) => {
              await fileCache.setItem(args.path, result); 
     
              return result;
-        })
+        });
 
+        // load js files 
         build.onLoad({ filter: /.*/ }, async (args: any) => {
 
           const response: any = await fetch(args.path, {
