@@ -1,12 +1,12 @@
 import React from 'react'
 import MonacoEditor from '@monaco-editor/react';
 
-const CodeEditor = () => {
+const JavaScriptCodeEditor = () => {
     return (
         <div>
-            <MonacoEditor />
+            <MonacoEditor height="500px" />
         </div>
     )
 }
 
-export default CodeEditor;
+export default JavaScriptCodeEditor;

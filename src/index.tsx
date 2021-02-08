@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom'; 
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
 import { fetchPlugin } from './plugins/fetch-plugin';
-import CodeEditor from './components/CodeEditor';
+import JavaScriptCodeEditor from './components/JavaScriptCodeEditor';
 
 const App = () => {
     const ref = useRef<any>();
@@ -69,7 +69,7 @@ const App = () => {
 
     return (
         <div>
-            <CodeEditor />
+            <JavaScriptCodeEditor />
             <textarea onChange={handleChange}></textarea>
             <div>
                 <button onClick={handleClick}>Submit</button>
