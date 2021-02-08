@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import MonacoEditor from '@monaco-editor/react';
 
 const RubyCodeEditor = () => {
     return (
         <div>
-            RUBY CODE EDITOR
+            <MonacoEditor height="500px" language="ruby" />
         </div>
     )
 }
 
-export default RubyCodeEditor
+export default RubyCodeEditor;
