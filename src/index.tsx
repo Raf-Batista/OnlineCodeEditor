@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
 import { fetchPlugin } from './plugins/fetch-plugin';
 import JavaScriptCodeEditor from './components/JavaScriptCodeEditor';
+import RubyCodeEditor from './components/RubyCodeEditor';
+import ElixirCodeEditor from './components/ElixirCodeEditor';
 
 const App = () => {
     const ref = useRef<any>();
@@ -75,6 +77,8 @@ const App = () => {
                 <button onClick={handleClick}>Submit</button>
             </div>
             <iframe title="preview" ref={iframe} sandbox="allow-scripts" srcDoc={html} />
+            <RubyCodeEditor />
+            <ElixirCodeEditor />
         </div>
     );
 };
