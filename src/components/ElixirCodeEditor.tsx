@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import MonacoEditor from '@monaco-editor/react';
 
 const ElixirCodeEditor = () => {
     return (
         <div>
-            ELIXIR CODE EDITOR
+            <MonacoEditor height="500px" language="elixir" />
         </div>
     )
 }
 
-export default ElixirCodeEditor
+export default ElixirCodeEditor;
