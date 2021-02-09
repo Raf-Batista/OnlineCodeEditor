@@ -57,7 +57,7 @@ const JavaScriptCodeEditor:React.FC<CodeEditorProps> = ({  initialValue, onChang
         <div className="editor-wrapper">
             <button className="button button-format is-primary is-small" onClick={handleClick}>Format</button>
             <MonacoEditor 
-                height="500px"   
+                height="100%"   
                 editorDidMount={handleEditorDidMount} 
                 value={initialValue}        
                 language="javascript" 
