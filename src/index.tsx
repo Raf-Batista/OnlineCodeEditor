@@ -71,14 +71,17 @@ const App = () => {
 
     return (
         <div>
-            <JavaScriptCodeEditor />
+            <JavaScriptCodeEditor 
+                initialValue="const a = 1;"
+                onChange={(value) => setInput(value)}
+            />
             <textarea onChange={handleChange}></textarea>
             <div>
                 <button onClick={handleClick}>Submit</button>
             </div>
             <iframe title="preview" ref={iframe} sandbox="allow-scripts" srcDoc={html} />
-            <RubyCodeEditor />
-            <ElixirCodeEditor />
+            {/* <RubyCodeEditor />
+            <ElixirCodeEditor /> */}
         </div>
     );
 };
