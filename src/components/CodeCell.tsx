@@ -18,14 +18,11 @@ const CodeCell = () => {
 
     return (
         <Resizable direction="vertical">
-            <div>
+            <div style={{ height: '100%', display: 'flex', flexDirection: 'row'}}>
                 <JavaScriptCodeEditor 
                     initialValue="const a = 1;"
                     onChange={(value) => setInput(value)}
                 />
-                <div>
-                    <button onClick={handleClick}>Submit</button>
-                </div>
                 <Preview code={code}/>
                 {/* <RubyCodeEditor />
                 <ElixirCodeEditor /> */}
