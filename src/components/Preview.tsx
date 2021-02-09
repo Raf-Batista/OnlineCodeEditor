@@ -8,7 +8,7 @@ interface PreviewProps {
 const html = `
 <html>
     <head>
-        <style>html { background-color: white}</html>
+        <style>html { background-color: white}</style>
     </head>
     <body>
         <div id="root"></div>
@@ -29,7 +29,7 @@ const html = `
 
 const Preview: React.FC<PreviewProps> = ({ code }) => {
     const iframe = useRef<any>();
-
+    
     useEffect(() => {
         iframe.current.srcdoc = html;
         iframe.current.contentWindow.postMessage(code, '*');
@@ -43,4 +43,4 @@ const Preview: React.FC<PreviewProps> = ({ code }) => {
     )
 }
 
-export default Preview
+export default Preview;
