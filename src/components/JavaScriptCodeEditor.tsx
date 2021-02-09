@@ -1,5 +1,7 @@
 import React from 'react'
 import MonacoEditor, { EditorDidMount } from '@monaco-editor/react';
+import prettier from 'prettier';
+import parser from 'prettier/parser-babel';
 
 interface CodeEditorProps {
     initialValue: string;
@@ -18,6 +20,7 @@ const JavaScriptCodeEditor:React.FC<CodeEditorProps> = ({ onChange, initialValue
 
     return (
         <div>
+            <button>Format</button>
             <MonacoEditor 
                 height="500px"   
                 editorDidMount={handleEditorDidMount} 
