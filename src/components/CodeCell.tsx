@@ -4,6 +4,7 @@ import RubyCodeEditor from './RubyCodeEditor';
 import ElixirCodeEditor from './ElixirCodeEditor';
 import Preview from './Preview';
 import bundle from '../bundler'
+import Resizable from './Resizable';
 
 const CodeCell = () => {
   
@@ -16,18 +17,21 @@ const CodeCell = () => {
     };
 
     return (
-        <div>
-            <JavaScriptCodeEditor 
-                initialValue="const a = 1;"
-                onChange={(value) => setInput(value)}
-            />
+        <Resizable direction="vertical">
             <div>
-                <button onClick={handleClick}>Submit</button>
+                <JavaScriptCodeEditor 
+                    initialValue="const a = 1;"
+                    onChange={(value) => setInput(value)}
+                />
+                <div>
+                    <button onClick={handleClick}>Submit</button>
+                </div>
+                <Preview code={code}/>
+                {/* <RubyCodeEditor />
+                <ElixirCodeEditor /> */}
             </div>
-            <Preview code={code}/>
-            {/* <RubyCodeEditor />
-            <ElixirCodeEditor /> */}
-        </div>
+        </Resizable>
+        
     );
 };
 
