@@ -9,6 +9,18 @@
     width: 100%;
 }
 
+.preview-error {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    color: red;
+    font-size: 2rem;
+}
+
+.preview-error h4 {
+    font-weight: bold;
+}
+
 .react-draggable-transparent-selection .preview-wrapper:after {
     content: "";
     position: absolute;
