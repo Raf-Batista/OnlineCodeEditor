@@ -1,0 +1,45 @@
+version: "3.7"
+services:
+  db:
+    container_name: rails-db
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+  server:
+    container_name: rails-server
+    build:
+      context: ./Servers/online-code-editor-rails
+    environment:
+      PG_USER: postgres
+      PG_PASSWORD: postgres
+      PG_PORT: 5432
+      PG_HOST: db
+      CLIENT: http://localhost:5000
+    volumes:
+      - ./Servers/online-code-editor-rails:/app
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true 
+    depends_on:
+      - db
+  client:
+    container_name: react-client
+    build:
+      context: ./Client
+    volumes:
+      - ./Client:/app
+      - /app/node_modules
+    ports:
+      - "5000:5000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - NODE_ENVIRONMENT=development
+      - REACT_APP_RUBY_URL=http://localhost:3000
+    stdin_open: true
+    tty: true
+
+    
