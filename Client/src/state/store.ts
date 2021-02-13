@@ -15,5 +15,3 @@ export const store = (preloadedState: {}) => {
 
   return store;
 };
-
-
