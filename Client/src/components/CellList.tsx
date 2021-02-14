@@ -14,7 +14,7 @@ const CellList: React.FC = () => {
     useEffect(() => {
         
         dispatch({
-            type: ActionType.INSERT_CELL_BEFORE,
+            type: ActionType.INSERT_CELL_AFTER,
             payload: {
               id: null,
               type: 'javascript'
@@ -22,7 +22,7 @@ const CellList: React.FC = () => {
         })
 
         dispatch({
-            type: ActionType.INSERT_CELL_BEFORE,
+            type: ActionType.INSERT_CELL_AFTER,
             payload: {
               id: null,
               type: 'text'
@@ -30,7 +30,7 @@ const CellList: React.FC = () => {
         })
 
         dispatch({
-            type: ActionType.INSERT_CELL_BEFORE,
+            type: ActionType.INSERT_CELL_AFTER,
             payload: {
               id: null,
               type: 'javascript'
@@ -38,7 +38,7 @@ const CellList: React.FC = () => {
         })
 
         dispatch({
-            type: ActionType.INSERT_CELL_BEFORE,
+            type: ActionType.INSERT_CELL_AFTER,
             payload: {
               id: null,
               type: 'text'
@@ -55,14 +55,14 @@ const CellList: React.FC = () => {
 
     const renderedCells = cells.map((cell) => 
     <Fragment key={cell.id}>
-        <AddCell nextCellId={cell.id} />
         <CellListItem cell={cell} /> 
+        <AddCell previousCellId={cell.id} />
     </Fragment>);
 
     return (
         <div>
-            {renderedCells}
-            <AddCell nextCellId={null} />
+            <AddCell previousCellId={null} />
+            {renderedCells} 
         </div>
     )
 }
