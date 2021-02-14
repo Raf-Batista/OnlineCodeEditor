@@ -1,5 +1,7 @@
+import { Fragment } from 'react';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import CellListItem from './CellListItem';
+import AddCell from './AddCell';
 
 import { useDispatch } from 'react-redux'
 import { ActionType } from '../state/action-types'
@@ -42,9 +44,6 @@ const CellList: React.FC = () => {
               type: 'text'
             }
         })
-
- 
-
     }, [])
 
 
@@ -54,16 +53,16 @@ const CellList: React.FC = () => {
         });
     });
 
-    console.log('current state of store', useTypedSelector((state) => state))
-
-
-    console.log('CellList component', cells)
-
-    const renderedCells = cells.map((cell) => <CellListItem key={cell.id} cell={cell} />);
+    const renderedCells = cells.map((cell) => 
+    <Fragment key={cell.id}>
+        <AddCell nextCellId={cell.id} />
+        <CellListItem cell={cell} /> 
+    </Fragment>);
 
     return (
         <div>
             {renderedCells}
+            <AddCell nextCellId={null} />
         </div>
     )
 }
