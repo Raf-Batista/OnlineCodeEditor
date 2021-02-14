@@ -1,6 +1,7 @@
 .add-cell {
     position: relative;
     transition: opacity .3s ease-in .1s;
+    margin: 8px 0;
 }
 
 .add-cell:not(:only-child) {
