@@ -1,0 +1,17 @@
+1) Add a button to change the theme of the code editor from dark to light 
+    - In the JavaScript Code Editor component
+        - Add state and a useEffect hook
+        - Check if the code editor theme is in local storage
+            - if in storage then set the state to value found
+            - if not, default state to dark and save in localstorage
+        - Create an onClick function to toggle between dark and light theme
+
+2) Add a menu button 
+    - One option is to allow users to change the theme of the overall application
+    - Another option to create an account
+    - Another option to log in 
+
+3) Implement Ruby feature in the back end
+
+4) Implement account features in the back end
+            
