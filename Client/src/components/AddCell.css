@@ -29,5 +29,14 @@
 }
 
 .add-cell .add-buttons button {
+    font-size: 1.25rem;
+    transition: background-color .5s;
+}
+
+.add-cell .add-buttons button:hover {
+    background-color: #37414B;
+}
+
+.add-cell .add-buttons button {
     margin: 0 20px;
 }

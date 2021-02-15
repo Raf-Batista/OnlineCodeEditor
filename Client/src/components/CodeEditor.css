@@ -18,8 +18,9 @@
 
 .editor-wrapper:hover .button-format {
     opacity: 1;
+    transition: background-color .3s;
 }
 
 .button-format:hover {
-    background-color: #1F2D3B !important;
+    background-color: #37414B !important;
 }

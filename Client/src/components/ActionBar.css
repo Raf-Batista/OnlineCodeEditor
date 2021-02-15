@@ -4,9 +4,17 @@
     right: 0;
     z-index: 5;
     opacity: .25;
-    transition: opacity .3s ease;
+    transition: all .3s ease;
 }
 
 .action-bar:hover {
     opacity: 1;
+}
+
+.action-bar .button {
+    transition: background-color .3s;
+}
+
+.action-bar .button:hover {
+    background-color: #1f2225;
 }
