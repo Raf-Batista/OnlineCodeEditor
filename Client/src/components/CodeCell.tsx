@@ -1,8 +1,6 @@
 import './CodeCell.css';
 import { useEffect } from 'react'; 
 import JavaScriptCodeEditor from './JavaScriptCodeEditor';
-import RubyCodeEditor from './RubyCodeEditor';
-import ElixirCodeEditor from './ElixirCodeEditor';
 import Preview from './Preview';
 import Resizable from './Resizable';
 import { Cell } from '../state';
@@ -57,8 +55,6 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
                     : <Preview code={bundle.code} error={bundle.error} />
                     }
                 </div>
-                {/* <RubyCodeEditor />
-                <ElixirCodeEditor /> */}
             </div>
         </Resizable>   
     );
