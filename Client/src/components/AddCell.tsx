@@ -27,6 +27,6 @@ const AddCell: React.FC<AddCellProps> = ({ previousCellId }) => {
             <div className="divider">&nbsp;</div>
         </div>
     )
-}
+};
 
-export default AddCell
+export default AddCell;
