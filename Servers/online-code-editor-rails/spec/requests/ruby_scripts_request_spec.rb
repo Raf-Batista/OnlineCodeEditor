@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "RubyScripts", type: :request do
     it 'can execute code' do 
-        post '/execute', params: {
-            code: 'puts 123'
-        }
+        post '/execute', params: { code: '1 + 1' }
 
-    expect 1.to be(truthy)
+        json_response = JSON.parse(response.body)
+
+        expect(json_response).to eq(2)
     end 
 end

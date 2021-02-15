@@ -14,4 +14,11 @@
 3) Implement Ruby feature in the back end
 
 4) Implement account features in the back end
+
+docker run --rm -v output:/app
             
+docker run -d --name ruby-test -v output:/app
+
+docker run ruby-test /output:/app
+
+docker run -privileged -it 

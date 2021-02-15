@@ -1,14 +1,9 @@
 class RubyScriptsController < ApplicationController
     def execute 
-        binding.pry
         code = params[:code]
-    
-        begin 
-            code_executed = SafeRuby.eval(code)
-            render json: code_executed
-        catch Exception 
-            render json: error: 'bundle error'
-        end 
-        
+        if code.include?('Kernel' || 'System') then render json: {error: 'bundle failed'} end 
+        executed_code = eval(code)
+
+        render json: executed_code, status: :ok and return
     end 
 end
