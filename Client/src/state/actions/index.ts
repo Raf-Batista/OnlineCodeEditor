@@ -50,10 +50,24 @@ export interface BundleCompleteAction {
     }
 }
 
+export interface LoadCodeStartAction {
+    type: ActionType.LOAD_START
+}
+
+export interface LoadCodeCompleteAction {
+    type: ActionType.LOAD_COMPLETE, 
+    payload: {
+        order: string[],
+        data: {}
+    }
+}
+
 export type Action = 
     MoveCellAction 
     | DeleteCellAction 
     | InsertCellAfterAction 
     | UpdateCellAction
     | BundleStartAction
-    | BundleCompleteAction;
+    | BundleCompleteAction
+    | LoadCodeStartAction
+    | LoadCodeCompleteAction;
