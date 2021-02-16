@@ -1,10 +1,79 @@
-import React from 'react';
-import MonacoEditor from '@monaco-editor/react';
+import './CodeEditor.css';
+import './syntax.css';
+import React, { useRef } from 'react'
+import MonacoEditor, { EditorDidMount } from '@monaco-editor/react';
+import prettier from 'prettier';
+import parser from 'prettier/parser-babel';
+import codeShift from 'jscodeshift';
+import Highlighter from 'monaco-jsx-highlighter';
 
-const RubyCodeEditor = () => {
+
+interface CodeEditorProps {
+    initialValue: string;
+    onChange(value: string): void;
+}
+
+const RubyCodeEditor:React.FC<CodeEditorProps> = ({  initialValue, onChange }) => {
+
+    const editorRef = useRef<any>();
+
+    const handleEditorDidMount: EditorDidMount = (getValue, monacoEditor) => {
+        editorRef.current = monacoEditor;
+        monacoEditor.onDidChangeModelContent(() => {
+            // Send value to ruby server, run and display executed ruby code
+            // dispatch update cell action
+            console.log(getValue());
+        });
+
+        monacoEditor.getModel()?.updateOptions({ tabSize: 2 });
+
+        const highlighter = new Highlighter(
+            // @ts-ignore
+            window.monaco, 
+            codeShift,
+            monacoEditor
+        );
+        highlighter.highLightOnDidChangeModelContent(
+            () => {},
+            () => {},
+            undefined,
+            () => {}
+        );
+    };
+
+    const handleClick = () => {
+        const unformated = editorRef.current.getModel().getValue();
+
+        const formatted = prettier.format(unformated, {
+            parser: 'babel',
+            plugins: [parser],
+            useTabs: false,
+            semi: true,
+            singleQuote: true
+        }).replace(/\n$/, '');
+
+        editorRef.current.setValue(formatted);
+    };
+
     return (
-        <div>
-            <MonacoEditor height="500px" language="ruby" />
+        <div className="editor-wrapper">
+            <button className="button button-format is-primary is-small" onClick={handleClick}>Format</button>
+            <MonacoEditor 
+                height="100%"   
+                editorDidMount={handleEditorDidMount} 
+                value={initialValue}        
+                language="ruby" 
+                theme="dark" 
+                options={{
+                    wordWrap: 'on',
+                    minimap: { enabled: false },
+                    showUnused: false,
+                    folding: false,
+                    lineNumbersMinChars: 3,
+                    fontSize: 24,
+                    scrollBeyondLastLine: false,
+                    automaticLayout: true
+            }}/>
         </div>
     )
 }
