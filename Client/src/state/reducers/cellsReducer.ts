@@ -64,6 +64,9 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
             }
 
             return state;
+        case ActionType.LOAD_COMPLETE: 
+             state = {order: action.payload.order, data: action.payload.data, loading: false, error: null}
+            return state;
         default: 
             return state;
     }
