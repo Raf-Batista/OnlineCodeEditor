@@ -1,3 +1,11 @@
+:root {
+    --primary-color: rgba(13, 110, 139, .75);
+    --secondary-color: rgba(195, 219, 226, 0.924); 
+    --tertiary-color:  rgba(59, 62, 63, 0.924);
+    --overlay-color: rgba(24, 39, 51, .85);
+    --menu-speed: .75s;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -23,3 +31,9 @@ body::-webkit-scrollbar-track {
  body::-webkit-scrollbar-thumb {
     background: #ececec;
  }
+
+@media screen and (max-width: 600px) {
+    body {
+        padding: 0;
+    }
+}
