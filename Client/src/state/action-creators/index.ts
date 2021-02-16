@@ -62,3 +62,19 @@ export const createBundle = (cellId: string, input: string) => {
         });
     };
 };
+
+export const loadCode = (order: string[], data: {}) => {
+    return async (dispatch: Dispatch<Action>) => {
+        dispatch({
+            type: ActionType.LOAD_START
+        });
+
+        dispatch({
+            type: ActionType.LOAD_COMPLETE,
+            payload: {
+                order,
+                data
+            }
+        })
+    }
+}
