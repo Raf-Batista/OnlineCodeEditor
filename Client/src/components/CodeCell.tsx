@@ -1,5 +1,5 @@
 import './CodeCell.css';
-import { useEffect } from 'react'; 
+import { useState, useEffect } from 'react'; 
 import JavaScriptCodeEditor from './JavaScriptCodeEditor';
 import Preview from './Preview';
 import Resizable from './Resizable';
@@ -7,15 +7,20 @@ import { Cell } from '../state';
 import { useActions } from '../hooks/useActions';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useCumulativeCode } from '../hooks/useCumulativeCode';
+import RubyCodeEditor from './RubyCodeEditor';
+import saveCode from '../hooks/saveCode';
 
 interface CodeCellProps {
     cell: Cell
 }
 
 const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
+    const [codeType, setCodeType] = useState('javascript');
+
     const { updateCell, createBundle } = useActions();
     const bundle = useTypedSelector((state) => state.bundles[cell.id]);
     const cumulativeCode = useCumulativeCode(cell.id);
+    const codeState = useTypedSelector((state) => state.cells);
 
     useEffect(() => {
         if (!bundle) {
@@ -38,10 +43,16 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
         <Resizable direction="vertical">
             <div style={{ height: 'calc(100% - 10px)', display: 'flex', flexDirection: 'row'}}>
                 <Resizable direction="horizontal">
-                    <JavaScriptCodeEditor 
+                    {
+                        codeType === 'javascript' 
+                        ? <JavaScriptCodeEditor 
                         initialValue={cell.content}
-                        onChange={(value) => updateCell(cell.id, value)}
-                    />
+                        onChange={(value) => updateCell(cell.id, value)} />
+                        : <RubyCodeEditor 
+                        initialValue={cell.content}
+                        onChange={(value) => updateCell(cell.id, value)} />
+                    }
+                    
                 </Resizable>
              
                 <div className="progress-wrapper">
