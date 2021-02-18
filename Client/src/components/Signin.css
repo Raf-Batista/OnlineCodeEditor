@@ -1,0 +1,122 @@
+.form-wrapper {
+    position: relative;
+    background-color: #a1a4ac;
+    height: 500px;
+    width: 700px;
+    margin: 0 auto;
+}
+
+.form-wrapper-header {
+    text-align: center;
+    font-size: 5rem;
+    padding: 3rem;
+    color: white;
+}
+
+.form-group {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-group input {
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem; 
+    border-radius: 2px;
+    background-color: white;
+    font-family: inherit;
+    border: none;
+    border-bottom: 3px solid transparent;
+    display: block;
+    transition: all .2s;
+    margin-bottom: 15px;
+}
+
+.form-group input::-webkit-input-placeholder {
+    color: black;
+}
+
+.form-group input:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem black;
+    border-bottom: 4px solid green;
+}
+
+.form-group input:focus:invalid { 
+    border-bottom: 4px solid red;
+}
+
+.form-group-label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    margin-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: block;
+    transition: all .3s;
+    color: black;
+    text-transform: uppercase;
+}
+
+
+.form-group input:placeholder-shown + .form-group-label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem);
+    color: white;
+}
+
+.form-group-button {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+ .btn, .btn:link, .btn:visited {
+	 text-transform: uppercase;
+	 text-decoration: none;
+	 padding: 1.5rem 4rem;
+	 display: inline-block;
+	 transition: all 0.5s;
+	 border-radius: 10rem;
+	 position: relative;
+     background-color: #1F2D3B;
+     color: white;
+}
+ .btn--white {
+	 background-color: #fff;
+	 color: #777;
+}
+ .btn:hover {
+	 transform: translateY(-3px);
+	 box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.6);
+}
+ .btn:active {
+	 transform: translateY(-1px);
+	 box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.6);
+}
+ .btn::after {
+	 content: "";
+	 display: inline-block;
+	 height: 100%;
+	 width: 100%;
+	 border-radius: 10rem;
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 z-index: -1;
+	 transition: all 0.4s;
+}
+ .btn--white::after {
+	 background-color: #fff;
+}
+ .btn:hover::after {
+	 transform: scaleX(1.4) scaleY(1.6);
+	 opacity: 0;
+}
+ .btn--animated {
+	 animation: moveInBottom 0.5s ease-out 0.75s;
+	 animation-fill-mode: backwards;
+}
+ 
