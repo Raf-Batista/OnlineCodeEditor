@@ -7,17 +7,32 @@ import { store } from './state';
 import CellList from './components/CellList';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Signin from './components/Signin';
 
 
 const App = () => {
+    const [loggedIn, setLoggedIn] = useState(false)
+    let loggedInUser = {};
+    useEffect(() => {
+        if (localStorage.getItem('loggedIn')) {
+            const user: string | null = localStorage.getItem('user')
+            loggedInUser = JSON.parse(user || '')
+            setLoggedIn(true);
+        };
+    }, [])
+
     return (
         <Provider store={store({})}>
-            <div>
-                <Navigation />
+            <Router>
+                <Navigation loggedIn={loggedIn} user={loggedInUser} />
                 <Header />
-                <CellList />
-            </div>
+                <Switch>
+                    <Route exact path="/" component={CellList} />
+                    <Route exact path="/signin" component={Signin} />
+                </Switch>
+            </Router>
         </Provider>
     );
 };
