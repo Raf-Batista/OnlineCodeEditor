@@ -184,3 +184,7 @@
 .menu-wrap .menu > div > div > ul > li:hover {
     transform: scale(1.2);
 }
+
+.menu-wrap .menu > div > div > ul > li {
+    cursor: pointer;
+}
