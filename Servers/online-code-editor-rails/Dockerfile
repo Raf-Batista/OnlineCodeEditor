@@ -4,8 +4,8 @@ RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 
 WORKDIR /app
 
-COPY Gemfile .
-# COPY Gemfile.lock .
+COPY ./Gemfile ./
+COPY Gemfile.lock .
 RUN bundle install
 COPY ./ ./
 COPY entrypoint.sh /usr/bin/
