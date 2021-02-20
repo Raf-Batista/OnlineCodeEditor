@@ -79,30 +79,50 @@ export const loadCode = (order: string[], data: {}) => {
     }
 }
 
-export const loginUser = (username: string, password: string) => {
+export const loginUser = (user: {}) => {
     return async (dispatch: Dispatch<Action>) => {
         dispatch({
             type: ActionType.LOGIN_USER_START
         });
 
-        const URL = 'localhost:3000';
-        const options = {
-            method: 'POST',
-            headers: {
-                'Accepts': 'application/json'
-            },
-            body: JSON.stringify({user: {username: username, password: password}})
-        };
+        try {
+            const URL = 'http://localhost:3000/sessions';
+            const options = {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    },
+                body: JSON.stringify(user)
+            };
 
-        const response = await fetch(URL, options);
+            const response = await fetch(URL, options);
 
-        const data = await response.json();
+            const data = await response.json();
 
-        if (data.errors) return dispatch({type: ActionType.LOGIN_USER_ERROR, payload: data.errors});
+            if (data.errors) return dispatch({type: ActionType.LOGIN_USER_ERROR, payload: data.errors});
+            
+            localStorage.setItem('user', data.username);
+            localStorage.setItem('codes', JSON.stringify(data.codes));
 
+            dispatch({
+                type: ActionType.LOGIN_USER_COMPLETE,
+                payload: {username: data.username, codes: data.codes}
+            });
+        } catch (error) {
+            console.log(error)
+        }      
+    };
+};
+
+export const checkIfLoggedIn = (username: string, codes: [{title: string, order: string[], data: string[]}]) => {
+    return async (dispatch: Dispatch<Action>) => {
         dispatch({
-            type: ActionType.LOGIN_USER_COMPLETE,
-            payload: {username: data.username, userCode: data.userCode}
+            type: ActionType.CHECK_IF_LOGGED_IN,
+            payload: {
+                username: username,
+                codes: codes
+            }
         });
     };
 };
