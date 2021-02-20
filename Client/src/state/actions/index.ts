@@ -70,10 +70,7 @@ export interface LoginUserCompleteAction {
     type: ActionType.LOGIN_USER_COMPLETE,
     payload: {
         username: string, 
-        userCode: {
-            order: string[],
-            data: string[]
-        }
+        codes: [ { title: string, order: string[], data: string[]} | null ]
     }
 }
 
@@ -81,6 +78,14 @@ export interface LoginUserErrorAction {
     type: ActionType.LOGIN_USER_ERROR,
     payload: {
         errors: string
+    }
+}
+
+export interface CheckIfLoggedInAction {
+    type: ActionType.CHECK_IF_LOGGED_IN,
+    payload: {
+        username: string,
+        codes: [ { title: string, order: string[], data: string[]} | null ]
     }
 }
 
@@ -95,4 +100,5 @@ export type Action =
     | LoadCodeCompleteAction
     | LoginUserStartAction
     | LoginUserCompleteAction
-    | LoginUserErrorAction;
+    | LoginUserErrorAction
+    | CheckIfLoggedInAction;
