@@ -7,12 +7,6 @@ import AddCell from './AddCell';
 import fetchUserCode from '../hooks/fetchUserCode'
 
 const CellList: React.FC = () => {
-    const { loadCode } = useActions()
-
-    useEffect(() => {
-        const { order, data } = fetchUserCode()
-        loadCode(order, data)
-    }, [])
 
     const cells = useTypedSelector(({ cells: { order, data } }) => {
         return order.map((id) => {
