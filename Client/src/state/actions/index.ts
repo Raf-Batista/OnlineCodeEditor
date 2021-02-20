@@ -62,6 +62,28 @@ export interface LoadCodeCompleteAction {
     }
 }
 
+export interface LoginUserStartAction {
+    type: ActionType.LOGIN_USER_START
+}
+
+export interface LoginUserCompleteAction {
+    type: ActionType.LOGIN_USER_COMPLETE,
+    payload: {
+        username: string, 
+        userCode: {
+            order: string[],
+            data: string[]
+        }
+    }
+}
+
+export interface LoginUserErrorAction {
+    type: ActionType.LOGIN_USER_ERROR,
+    payload: {
+        errors: string
+    }
+}
+
 export type Action = 
     MoveCellAction 
     | DeleteCellAction 
@@ -70,4 +92,7 @@ export type Action =
     | BundleStartAction
     | BundleCompleteAction
     | LoadCodeStartAction
-    | LoadCodeCompleteAction;
+    | LoadCodeCompleteAction
+    | LoginUserStartAction
+    | LoginUserCompleteAction
+    | LoginUserErrorAction;
