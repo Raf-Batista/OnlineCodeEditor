@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
     def create 
-        user = User.find_by(:username)
+        user = User.find_by(username: params[:username])
 
-        if user.authenticate(:password) then render json: user, status: :ok and return end
+        if user.authenticate(params[:password]) then render json: {username: user.username, codes: user.codes}, status: :ok and return end
         
         render json: {errors: 'username or password incorrect'} and return
         
@@ -11,6 +11,6 @@ class SessionsController < ApplicationController
     private 
 
     def user_params 
-        params.permit(:username. :password)
+        params.permit(:username, :password)
     end 
 end
