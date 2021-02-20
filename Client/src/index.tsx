@@ -9,28 +9,19 @@ import Header from './components/Header';
 import Navigation from './components/Navigation';
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Signin from './components/Signin';
-
+import Login from './components/Login';
 
 const App = () => {
-    const [loggedIn, setLoggedIn] = useState(false)
-    let loggedInUser = {};
-    useEffect(() => {
-        if (localStorage.getItem('loggedIn')) {
-            const user: string | null = localStorage.getItem('user')
-            loggedInUser = JSON.parse(user || '')
-            setLoggedIn(true);
-        };
-    }, [])
+
 
     return (
         <Provider store={store({})}>
             <Router>
-                <Navigation loggedIn={loggedIn} user={loggedInUser} />
+                <Navigation />
                 <Header />
                 <Switch>
                     <Route exact path="/" component={CellList} />
-                    <Route exact path="/signin" component={Signin} />
+                    <Route exact path="/login" component={Login} />
                 </Switch>
             </Router>
         </Provider>
