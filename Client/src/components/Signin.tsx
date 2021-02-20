@@ -1,6 +1,6 @@
 import './Signin.css';
 import useForm from '../hooks/useForm';
-import signin from '../hooks/signin';
+import { useActions } from '../hooks/useActions'
 
 const Signin: React.FC = () => {
     interface UserParams {
@@ -8,8 +8,10 @@ const Signin: React.FC = () => {
         password: string;  
     }
 
+    const { loginUser } = useActions();
+
     const initialValues: UserParams = {username: '', password: ''}
-    const { values, handleChange, handleSubmit} = useForm(initialValues, signin);
+    const { values, handleChange, handleSubmit} = useForm(initialValues, loginUser);
 
     return (
         <div className="form-wrapper">
