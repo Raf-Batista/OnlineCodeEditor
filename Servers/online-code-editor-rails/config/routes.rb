@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :users do 
     resources :codes, only: [:create]
   end 
+
+  post '/sessions', to: 'sessions#create'
 end
