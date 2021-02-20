@@ -78,3 +78,31 @@ export const loadCode = (order: string[], data: {}) => {
         })
     }
 }
+
+export const loginUser = (username: string, password: string) => {
+    return async (dispatch: Dispatch<Action>) => {
+        dispatch({
+            type: ActionType.LOGIN_USER_START
+        });
+
+        const URL = 'localhost:3000';
+        const options = {
+            method: 'POST',
+            headers: {
+                'Accepts': 'application/json'
+            },
+            body: JSON.stringify({user: {username: username, password: password}})
+        };
+
+        const response = await fetch(URL, options);
+
+        const data = await response.json();
+
+        if (data.errors) return dispatch({type: ActionType.LOGIN_USER_ERROR, payload: data.errors});
+
+        dispatch({
+            type: ActionType.LOGIN_USER_COMPLETE,
+            payload: {username: data.username, userCode: data.userCode}
+        });
+    };
+};
