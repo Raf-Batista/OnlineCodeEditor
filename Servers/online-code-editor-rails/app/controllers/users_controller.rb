@@ -1,18 +1,17 @@
 class UsersController < ApplicationController
     def create 
-        user = User.new(users_params)
-
+        user = User.new(user_params)
         if user.valid? 
             user.save 
-            render json: user, status: :created and return
+            render json: {username: user.username, codes: user.codes}, status: :created and return
         end 
 
-        render json: { errors: user.errors.full_messages} and return
+        render json: { errors: user.errors.full_messages } and return
     end 
 
     private 
 
     def user_params 
-        params.require(:user).permit(:username, :password)
+        params.permit(:username, :password)
     end 
 end
