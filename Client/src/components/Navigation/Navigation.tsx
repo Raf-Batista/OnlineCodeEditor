@@ -3,8 +3,8 @@ import "./Navigation.css";
 import { useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { SyntheticEvent } from "react";
-import { useActions } from "../hooks/useActions";
-import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 // interface NavigationProps {
 //   user: string

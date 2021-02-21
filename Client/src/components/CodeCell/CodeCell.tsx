@@ -1,14 +1,11 @@
 import './CodeCell.css';
 import { useState, useEffect } from 'react'; 
-import JavaScriptCodeEditor from './JavaScriptCodeEditor';
-import Preview from './Preview';
-import Resizable from './Resizable';
-import { Cell } from '../state';
-import { useActions } from '../hooks/useActions';
-import { useTypedSelector } from '../hooks/useTypedSelector';
-import { useCumulativeCode } from '../hooks/useCumulativeCode';
-import RubyCodeEditor from './RubyCodeEditor';
-import saveCode from '../hooks/saveCode';
+import { JavaScriptCodeEditor, Preview, Resizable, RubyCodeEditor} from '../';
+import { Cell } from '../../state';
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useCumulativeCode } from '../../hooks/useCumulativeCode';
+import saveCode from '../../hooks/saveCode';
 
 interface CodeCellProps {
     cell: Cell

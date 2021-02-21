@@ -4,13 +4,9 @@ import './main.css';
 import ReactDOM from 'react-dom'; 
 import { Provider } from 'react-redux';
 import { store } from './state';
-import CellList from './components/CellList';
-import Header from './components/Header';
-import Navigation from './components/Navigation';
+import { Header, Navigation, CellList, Signup, Login  } from './components';
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Signup from './components/Signup';
-import Login from './components/Login';
 
 const App = () => {
     return (

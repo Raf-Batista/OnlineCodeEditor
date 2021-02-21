@@ -1,10 +1,10 @@
 // @ts-nocheck
 import React from 'react';
 import './Signup.css'
-import useForm from "../hooks/useForm";
-import { useActions } from "../hooks/useActions";
+import useForm from "../../hooks/useForm";
+import { useActions } from "../../hooks/useActions";
 import { Redirect, Link } from "react-router-dom";
-import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
   interface UserParams {
     username: string;

@@ -1,9 +1,9 @@
 // @ts-nocheck
 import "./Login.css";
-import useForm from "../hooks/useForm";
-import { useActions } from "../hooks/useActions";
+import useForm from "../../hooks/useForm";
+import { useActions } from "../../hooks/useActions";
 import { Redirect, Link } from "react-router-dom";
-import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const Login: React.FC = () => {
   interface UserParams {
@@ -50,7 +50,6 @@ const Login: React.FC = () => {
                 placeholder="password"
               />
               <label className="form-group-label">Password</label>
-    
               <div className="form-group-button">
                 <button className="btn">Login</button>
               </div>
