@@ -11,7 +11,7 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
     password: string;
   }
 
-const Signup: React.FC = () => {
+const Signup: React.FC = ({ loggedIn }) => {
     const { loginUser } = useActions();
     const initialValues: UserParams = { username: "", password: "" };
     const { values, handleChange, handleSubmit } = useForm(
@@ -20,7 +20,8 @@ const Signup: React.FC = () => {
     );
 
     return (
-        <div className="form-wrapper">
+        <>
+          { !loggedIn ? <div className="form-wrapper">
             <div className="form-wrapper-header">
               <h1>Signup</h1>
             </div>
@@ -52,13 +53,15 @@ const Signup: React.FC = () => {
               <label className="form-group-label">Password</label>
     
               <div className="form-group-button">
-                <button className="btn">Login</button>
+                <button className="btn">Signup</button>
               </div>
             </form>
             <div className="form-link">
               <span>Already have an account? <Link to='/login'>Login</Link></span>
             </div>
-          </div>
+          </div> : <Redirect exact to="/" />}
+        </>
+        
     )
 }
 

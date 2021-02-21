@@ -79,6 +79,41 @@ export const loadCode = (order: string[], data: {}) => {
     }
 }
 
+export const signUpUser = (user: {}) => {
+    return async (dispatch: Dispatch<Action>) => {
+        dispatch({
+            type: ActionType.LOGIN_USER_START
+        });
+
+        try {
+            const URL = 'http://localhost:3000/users';
+            const options = {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    },
+                body: JSON.stringify(user)
+            };
+
+            const response = await fetch(URL, options);
+
+            const data = await response.json();
+
+            if (data.errors) return dispatch({type: ActionType.LOGIN_USER_ERROR, payload: data.errors});
+            
+            localStorage.setItem('user', JSON.stringify(data));
+
+            dispatch({
+                type: ActionType.LOGIN_USER_COMPLETE,
+                payload: {username: data.username, codes: data.codes}
+            });
+        } catch (error) {
+            console.log(error)
+        }      
+    };
+};
+
 export const loginUser = (user: {}) => {
     return async (dispatch: Dispatch<Action>) => {
         dispatch({
@@ -102,8 +137,7 @@ export const loginUser = (user: {}) => {
 
             if (data.errors) return dispatch({type: ActionType.LOGIN_USER_ERROR, payload: data.errors});
             
-            localStorage.setItem('user', data.username);
-            localStorage.setItem('codes', JSON.stringify(data.codes));
+            localStorage.setItem('user', JSON.stringify(data));
 
             dispatch({
                 type: ActionType.LOGIN_USER_COMPLETE,
@@ -115,13 +149,13 @@ export const loginUser = (user: {}) => {
     };
 };
 
-export const checkIfLoggedIn = (username: string, codes: [{title: string, order: string[], data: string[]}]) => {
+export const checkIfLoggedIn = (user: {username: string, codes: [{title: string, order: string[], data: string[]}]}) => {
     return async (dispatch: Dispatch<Action>) => {
         dispatch({
             type: ActionType.CHECK_IF_LOGGED_IN,
             payload: {
-                username: username,
-                codes: codes
+                username: user.username,
+                codes: user.codes
             }
         });
     };

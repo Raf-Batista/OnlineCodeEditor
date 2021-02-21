@@ -10,15 +10,7 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 //   user: string
 // }
 
-const Navigation: React.FC<NavigationProps> = () => {
-  const { checkIfLoggedIn } = useActions();
-  const loggedInUser = useTypedSelector((state) => state.user);
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      checkIfLoggedIn(user);
-    }
-  }, [loggedInUser]);
+const Navigation: React.FC<NavigationProps> = ({ loggedIn, setLoggedIn }) => {
 
   const handleClick = (e: SyntheticEvent) => {
     const toggler = document.querySelector("input");
@@ -36,6 +28,7 @@ const Navigation: React.FC<NavigationProps> = () => {
     }
 
     localStorage.clear();
+    setLoggedIn(false);
   };
 
   return (
@@ -51,7 +44,7 @@ const Navigation: React.FC<NavigationProps> = () => {
                 <li onClick={handleClick}>
                     <Link to="/">Home</Link>
                   </li>
-              {loggedInUser && loggedInUser.username !== "" ? (
+              {loggedIn ? (
                 <>
                   <li>Save</li>
                   <li>Load</li>
