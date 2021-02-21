@@ -48,12 +48,11 @@ const Navigation: React.FC<NavigationProps> = () => {
         <div>
           <div>
             <ul>
-              {loggedInUser && loggedInUser.username !== "" ? (
-                <>
-                  <li onClick={handleClick}>
+                <li onClick={handleClick}>
                     <Link to="/">Home</Link>
                   </li>
-
+              {loggedInUser && loggedInUser.username !== "" ? (
+                <>
                   <li>Save</li>
                   <li>Load</li>
                   <li>Email</li>
@@ -63,6 +62,9 @@ const Navigation: React.FC<NavigationProps> = () => {
                 </>
               ) : (
                 <>
+                  <li onClick={handleClick}>
+                    <Link to="/signup">Signup</Link>
+                  </li>
                   <li onClick={handleClick}>
                     <Link to="/login">Login</Link>
                   </li>
