@@ -2,7 +2,7 @@
 import "./Login.css";
 import useForm from "../hooks/useForm";
 import { useActions } from "../hooks/useActions";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 
 const Login: React.FC = () => {
@@ -55,6 +55,9 @@ const Login: React.FC = () => {
                 <button className="btn">Login</button>
               </div>
             </form>
+            <div className="form-link">
+              <span>Don't have an account? <Link to='/signup'>Signup</Link></span>
+            </div>
           </div>
     
   );

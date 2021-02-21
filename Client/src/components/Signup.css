@@ -120,3 +120,15 @@
 	 animation-fill-mode: backwards;
 }
  
+.form-link {
+    color: orangered;
+    bottom: 0;
+    position: absolute;
+    transform: translate(24rem, -8rem);
+    font-size: 1.5rem;
+}
+
+.form-link span a {
+    margin-left: .3rem;
+    color: darkblue;
+}

@@ -3,7 +3,7 @@ import React from 'react';
 import './Signup.css'
 import useForm from "../hooks/useForm";
 import { useActions } from "../hooks/useActions";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 
   interface UserParams {
@@ -55,6 +55,9 @@ const Signup: React.FC = () => {
                 <button className="btn">Login</button>
               </div>
             </form>
+            <div className="form-link">
+              <span>Already have an account? <Link to='/login'>Login</Link></span>
+            </div>
           </div>
     )
 }
