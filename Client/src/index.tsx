@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Navigation from './components/Navigation';
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Signup from './components/Signup';
 import Login from './components/Login';
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
                 <Header />
                 <Switch>
                     <Route exact path="/" component={CellList} />
+                    <Route exact path="/signup" component={Signup} />
                     <Route exact path="/login" component={Login} />
                 </Switch>
             </Router>
