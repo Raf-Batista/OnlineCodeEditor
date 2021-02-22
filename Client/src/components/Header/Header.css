@@ -22,3 +22,59 @@
 .header-help:hover {
     background-color: darkgray !important;
 }
+
+.header-help a,
+.header-help a:link,
+.header-help a:visited {
+    color: white;
+}
+
+.popup {
+    height: 100vh;
+    width: 100%;
+    font-size: 3rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s;
+    background-color: rgba(0, 0, 0, .8);
+}
+
+.popup:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-close,
+.popup-close:link
+.popup-close:visited {
+        color: white;
+        position: absolute;
+        top: 3.75rem;
+        right: 3.75rem;
+        font-size: 3rem;
+        text-decoration: none;
+        display: inline-block;
+        line-height: 1;
+}
+
+.popup-content {
+    margin-top: 10rem;
+}
+
+.header span {
+    display: block;
+}
+
+.popup-content ul h3 {
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+.popup-content ul li {
+    margin-bottom: 3rem;
+}
