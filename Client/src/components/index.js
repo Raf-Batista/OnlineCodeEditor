@@ -1,5 +1,6 @@
 import ActionBar from './ActionBar';
 import CellList from './CellList';
+import Code from './Code'
 import CodeCell from './CodeCell';
 import ElixirCodeEditor from './ElixirCodeEditor';
 import Header from './Header';
@@ -16,6 +17,7 @@ import UserCodes from './UserCodes';
 export {
     ActionBar,
     CellList,
+    Code,
     CodeCell,
     ElixirCodeEditor,
     Header,
