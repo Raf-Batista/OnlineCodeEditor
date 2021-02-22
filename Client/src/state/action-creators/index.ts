@@ -63,6 +63,41 @@ export const createBundle = (cellId: string, input: string) => {
     };
 };
 
+export const saveCode = (code: {}, userId: number) => {
+    return async (dispatch: Dispatch<Action>) => {
+        dispatch({
+            type: ActionType.SAVE_START
+        });
+
+        try {
+            const URL = `http://localhost:3000/users/${userId}/codes`;
+            const options = {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    },
+                body: JSON.stringify(code)
+            };
+
+            const response = await fetch(URL, options);
+
+            const data = await response.json();
+
+            if (data.errors) return dispatch({type: ActionType.SAVE_ERROR, payload: data.errors});
+            
+            localStorage.setItem('user', JSON.stringify(data));
+
+            dispatch({
+                type: ActionType.SAVE_COMPLETE,
+            });
+        } catch (error) {
+            console.log(error)
+        }      
+    }
+}
+
+
 export const loadCode = (order: string[], data: {}) => {
     return async (dispatch: Dispatch<Action>) => {
         dispatch({
