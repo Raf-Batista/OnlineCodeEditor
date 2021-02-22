@@ -14,7 +14,7 @@ const App: React.FC = () => {
       if (user) {
           setLoggedIn(true);
           checkIfLoggedIn(JSON.parse(user));
-      } else if (loggedInUser) {
+      } else if (loggedInUser.username !== '') {
         setLoggedIn(true);
       }
     }, [checkIfLoggedIn, loggedInUser]);
@@ -32,5 +32,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-
-// ReactDOM.render(<App />, document.querySelector('#root'));
