@@ -62,6 +62,19 @@ export interface LoadCodeCompleteAction {
     }
 }
 
+export interface SaveCodeStartAction {
+    type: ActionType.SAVE_START
+}
+
+export interface SaveCodeCompleteAction {
+    type: ActionType.SAVE_COMPLETE
+}
+
+export interface SaveCodeErrorAction {
+    type: ActionType.SAVE_ERROR
+}
+
+
 export interface LoginUserStartAction {
     type: ActionType.LOGIN_USER_START
 }
@@ -101,4 +114,7 @@ export type Action =
     | LoginUserStartAction
     | LoginUserCompleteAction
     | LoginUserErrorAction
-    | CheckIfLoggedInAction;
+    | CheckIfLoggedInAction
+    | SaveCodeStartAction
+    | SaveCodeCompleteAction
+    | SaveCodeErrorAction;
