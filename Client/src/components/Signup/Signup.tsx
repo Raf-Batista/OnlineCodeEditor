@@ -12,11 +12,11 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
   }
 
 const Signup: React.FC = ({ loggedIn }) => {
-    const { loginUser } = useActions();
+    const { signUpUser } = useActions();
     const initialValues: UserParams = { username: "", password: "" };
     const { values, handleChange, handleSubmit } = useForm(
       initialValues,
-      loginUser
+      signUpUser
     );
 
     return (
