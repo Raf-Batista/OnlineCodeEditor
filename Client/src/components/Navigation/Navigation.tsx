@@ -10,14 +10,25 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 //   user: string
 // }
 
-const Navigation: React.FC<NavigationProps> = ({ loggedIn, setLoggedIn }) => {
-
+const Navigation: React.FC<NavigationProps> = ({ loggedIn, setLoggedIn, save, load, userCode, userId }) => {
   const handleClick = (e: SyntheticEvent) => {
     const toggler = document.querySelector("input");
 
     if (toggler?.checked === true) {
       toggler.checked = false;
     }
+  };
+
+  const handleSave = () => {
+    const toggler = document.querySelector("input");
+
+    if (toggler?.checked === true) {
+      toggler.checked = false;
+    }
+    
+    const code = {...userCode, title: Date.now()};
+
+    save(code, userId);
   };
 
   const handleLogout = (e: SyntheticEvent) => {
@@ -43,11 +54,13 @@ const Navigation: React.FC<NavigationProps> = ({ loggedIn, setLoggedIn }) => {
             <ul>
                 <li onClick={handleClick}>
                     <Link to="/">Home</Link>
-                  </li>
+                </li>
               {loggedIn ? (
                 <>
-                  <li>Save</li>
-                  <li>Load</li>
+                  <li onClick={handleSave}>Save</li>
+                  <li onClick={handleClick}>
+                    <Link to="/codes">Load</Link>
+                  </li>
                   <li>Email</li>
                   <li onClick={handleLogout}>
                     <Link to="/">Logout</Link>
