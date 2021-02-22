@@ -1,9 +1,16 @@
+// @ts-nocheck
 import './UserCodes.css';
+import { Code } from '../';
 
-const UserCodes: React.FC = () => {
+interface UserCodesProps {
+    user: {}
+}
+
+const UserCodes: React.FC<UserCodesProps> = ({ user, load, history }) => {
+    console.log(user)
     return (
-        <div>
-            UserCodes
+        <div className="user-codes">
+            {user.codes && user.codes.map((code) => <Code code={code} load={load} history={history} />)}
         </div>
     )
 }
