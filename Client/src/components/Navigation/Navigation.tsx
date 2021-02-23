@@ -2,13 +2,14 @@
 import "./Navigation.css";
 import { Link } from "react-router-dom";
 import { SyntheticEvent } from "react";
+import { logoutUser } from "../../state/action-creators";
 
 
 // interface NavigationProps {
 //   user: string
 // }
 
-const Navigation: React.FC<NavigationProps> = ({ loggedIn, setLoggedIn }) => {
+const Navigation: React.FC<NavigationProps> = ({ loggedIn, setLoggedIn, logout }) => {
   const handleClick = (e: SyntheticEvent) => {
     const toggler = document.querySelector("input");
 
@@ -24,7 +25,7 @@ const Navigation: React.FC<NavigationProps> = ({ loggedIn, setLoggedIn }) => {
       toggler.checked = false;
     }
 
-    localStorage.clear();
+    logout();
     setLoggedIn(false);
   };
 

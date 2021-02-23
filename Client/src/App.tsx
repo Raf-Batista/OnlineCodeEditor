@@ -4,10 +4,11 @@ import { Header, Navigation, CellList, Signup, Login, UserCodes, Save } from "./
 import { Route, Switch } from "react-router-dom";
 import { useActions } from './hooks/useActions';
 import { useTypedSelector } from './hooks/useTypedSelector';
+import { ToastContainer } from "react-toastify";
 
 const App: React.FC = () => {
     const [loggedIn, setLoggedIn] = useState(false);
-    const { checkIfLoggedIn, saveCode, loadCode } = useActions();
+    const { checkIfLoggedIn, saveCode, loadCode, logoutUser } = useActions();
     const loggedInUser = useTypedSelector((state) => state.user);
     const {order, data} = useTypedSelector((state) => state.cells);
     const userCode = {order: order, data: data};
@@ -27,7 +28,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Navigation loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <Navigation loggedIn={loggedIn} setLoggedIn={setLoggedIn} logout={logoutUser} />
       <Header />
       <Switch>
         <Route exact path="/" component={CellList} />
@@ -36,6 +37,7 @@ const App: React.FC = () => {
         <Route exact path="/codes" render={(routeProps) => <UserCodes {...routeProps}  user={loggedInUser} load={loadCode} />} />
         <Route exact path="/save" render={(routeProps) => <Save {...routeProps}  loggedIn={loggedIn} setLoggedIn={setLoggedIn} save={saveCode} userCode={userCode} userId={userId} /> } />
       </Switch>
+      <ToastContainer/>
     </>
   );
 };

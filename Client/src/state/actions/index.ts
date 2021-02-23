@@ -93,6 +93,18 @@ export interface LoginUserErrorAction {
     }
 }
 
+export interface LogoutUserStartAction {
+    type: ActionType.LOGOUT_USER_START
+}
+
+export interface LogoutUserCompleteAction {
+    type: ActionType.LOGOUT_USER_COMPLETE
+}
+
+export interface LogoutUserErrorAction {
+    type: ActionType.LOGOUT_USER_ERROR
+}
+
 export interface CheckIfLoggedInAction {
     type: ActionType.CHECK_IF_LOGGED_IN,
     payload: {
@@ -113,6 +125,9 @@ export type Action =
     | LoginUserStartAction
     | LoginUserCompleteAction
     | LoginUserErrorAction
+    | LogoutUserStartAction
+    | LogoutUserCompleteAction
+    | LogoutUserErrorAction
     | CheckIfLoggedInAction
     | SaveCodeStartAction
     | SaveCodeCompleteAction
