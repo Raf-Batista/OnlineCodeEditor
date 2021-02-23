@@ -3,7 +3,6 @@ import "./Login.css";
 import useForm from "../../hooks/useForm";
 import { useActions } from "../../hooks/useActions";
 import { Redirect, Link } from "react-router-dom";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const Login: React.FC = ({ loggedIn }) => {
   interface UserParams {
@@ -11,7 +10,6 @@ const Login: React.FC = ({ loggedIn }) => {
     password: string;
   }
 
-  const user = useTypedSelector(({ user }) => user.username);
   const { loginUser } = useActions();
   const initialValues: UserParams = { username: "", password: "" };
   const { values, handleChange, handleSubmit } = useForm(
