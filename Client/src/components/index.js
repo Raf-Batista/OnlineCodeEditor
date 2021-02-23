@@ -10,6 +10,7 @@ import Navigation from './Navigation';
 import Preview from './Preview';
 import Resizable from './Resizable';
 import RubyCodeEditor from './RubyCodeEditor';
+import Save from './Save';
 import Signup from './Signup';
 import TextEditor from './TextEditor';
 import UserCodes from './UserCodes';
@@ -27,6 +28,7 @@ export {
     Preview,
     Resizable,
     RubyCodeEditor,
+    Save,
     Signup,
     TextEditor,
     UserCodes,
