@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Dispatch } from "redux";
 import { ActionType } from "../action-types";
 import { toast } from "react-toastify";
@@ -79,8 +80,8 @@ export const saveCode = (code: {}, userId: number) => {
       type: ActionType.SAVE_START,
     });
 
-    try {
-      const URL = `http://localhost:3000/users/${userId}/codes`;
+    try { 
+      const URL = `${process.env.REACT_APP_URL}/users/${userId}/codes`;
       const options = {
         method: "POST",
         headers: {
@@ -167,7 +168,7 @@ export const signUpUser = (user: {}) => {
     });
 
     try {
-      const URL = "http://localhost:3000/users";
+      const URL = `${process.env.REACT_APP_URL}/users`;
       const options = {
         method: "POST",
         headers: {
@@ -230,7 +231,7 @@ export const loginUser = (user: {}) => {
     });
 
     try {
-      const URL = "http://localhost:3000/sessions";
+      const URL = `${process.env.REACT_APP_URL}/sessions`;
       const options = {
         method: "POST",
         headers: {
