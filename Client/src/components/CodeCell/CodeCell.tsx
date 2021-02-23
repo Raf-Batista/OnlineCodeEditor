@@ -5,8 +5,6 @@ import { Cell } from '../../state';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useCumulativeCode } from '../../hooks/useCumulativeCode';
-import saveCode from '../../hooks/saveCode';
-
 interface CodeCellProps {
     cell: Cell
 }
@@ -17,7 +15,6 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
     const { updateCell, createBundle } = useActions();
     const bundle = useTypedSelector((state) => state.bundles[cell.id]);
     const cumulativeCode = useCumulativeCode(cell.id);
-    const codeState = useTypedSelector((state) => state.cells);
 
     useEffect(() => {
         if (!bundle) {
