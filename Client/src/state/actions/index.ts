@@ -1,4 +1,3 @@
-import { fromNodes } from 'jscodeshift/src/Collection';
 import { ActionType } from '../action-types';
 import { CellTypes } from '../cell';
 import { Direction } from '../direction';
