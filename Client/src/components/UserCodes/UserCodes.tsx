@@ -1,4 +1,5 @@
 // @ts-nocheck
+import React from 'react';
 import './UserCodes.css';
 import { Code } from '../';
 
@@ -7,12 +8,11 @@ interface UserCodesProps {
 }
 
 const UserCodes: React.FC<UserCodesProps> = ({ user, load, history }) => {
-    console.log(user)
     return (
         <div className="user-codes">
-            {user.codes && user.codes.map((code) => <Code code={code} load={load} history={history} />)}
+            {user.codes && user.codes.map((code) => <div key={code.id}><Code code={code} load={load} history={history} /></div>)} 
         </div>
     )
-}
+};
 
 export default UserCodes;
