@@ -5,10 +5,11 @@ interface CodeProps {
   code : {title: string}
 }
 
-const Code: React.FC<CodeProps> = ({ code, load }) => {
+const Code: React.FC<CodeProps> = ({ code, load, history }) => {
   
   const handleClick = () => {
-    load(code.order, code.data)
+    load(code.order, code.data);
+    history.push('/');
   }
 
   return (
