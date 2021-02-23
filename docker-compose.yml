@@ -39,7 +39,7 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
       - NODE_ENVIRONMENT=development
-      - REACT_APP_RUBY_URL=http://localhost:3000
+      - REACT_APP_URL=http://localhost:3000
     stdin_open: true
     tty: true
 
