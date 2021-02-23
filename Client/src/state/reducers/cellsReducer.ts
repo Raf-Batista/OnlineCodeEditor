@@ -33,6 +33,7 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
             state.order = state.order.filter(id => id !== action.payload);
             
             return state;
+        
         case ActionType.MOVE_CELL:
             const { direction } = action.payload;
             const index = state.order.findIndex((id) => id === action.payload.id); 
@@ -46,6 +47,7 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
             state.order[targetIndex] = action.payload.id;
 
             return state;
+        
         case ActionType.INSERT_CELL_AFTER:
             const cell: Cell = {
                 content: '',
@@ -64,6 +66,12 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
             }
 
             return state;
+       
+        case ActionType.LOAD_COMPLETE: 
+        // @ts-ignore
+             state = {order: action.payload.order, data: action.payload.data, loading: false, error: null}
+            return state;
+        
         default: 
             return state;
     }

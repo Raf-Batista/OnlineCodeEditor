@@ -1,9 +1,6 @@
-import { Cell } from '../state';
-import  CodeCell  from './CodeCell';
-import  TextEditor  from './TextEditor'
-import ActionBar from './ActionBar';
 import './CellListItem.css'
-
+import { Cell } from '../../state';
+import { ActionBar, CodeCell, TextEditor } from '../';
 
 interface CellListItemProps {
     cell: Cell

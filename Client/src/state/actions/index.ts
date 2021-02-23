@@ -1,4 +1,3 @@
-import { fromNodes } from 'jscodeshift/src/Collection';
 import { ActionType } from '../action-types';
 import { CellTypes } from '../cell';
 import { Direction } from '../direction';
@@ -50,10 +49,86 @@ export interface BundleCompleteAction {
     }
 }
 
+export interface LoadCodeStartAction {
+    type: ActionType.LOAD_START
+}
+
+export interface LoadCodeCompleteAction {
+    type: ActionType.LOAD_COMPLETE, 
+    payload: {
+        order: string[],
+        data: {}
+    }
+}
+
+export interface SaveCodeStartAction {
+    type: ActionType.SAVE_START
+}
+
+export interface SaveCodeCompleteAction {
+    type: ActionType.SAVE_COMPLETE
+}
+
+export interface SaveCodeErrorAction {
+    type: ActionType.SAVE_ERROR
+}
+
+
+export interface LoginUserStartAction {
+    type: ActionType.LOGIN_USER_START
+}
+
+export interface LoginUserCompleteAction {
+    type: ActionType.LOGIN_USER_COMPLETE,
+    payload: {
+        username: string, 
+        codes: [ { title: string, order: string[], data: string[]} | null ]
+    }
+}
+
+export interface LoginUserErrorAction {
+    type: ActionType.LOGIN_USER_ERROR,
+    payload: {
+        errors: string
+    }
+}
+
+export interface LogoutUserStartAction {
+    type: ActionType.LOGOUT_USER_START
+}
+
+export interface LogoutUserCompleteAction {
+    type: ActionType.LOGOUT_USER_COMPLETE
+}
+
+export interface LogoutUserErrorAction {
+    type: ActionType.LOGOUT_USER_ERROR
+}
+
+export interface CheckIfLoggedInAction {
+    type: ActionType.CHECK_IF_LOGGED_IN,
+    payload: {
+        username: string,
+        codes: [ { title: string, order: string[], data: string[]} | null ]
+    }
+}
+
 export type Action = 
     MoveCellAction 
     | DeleteCellAction 
     | InsertCellAfterAction 
     | UpdateCellAction
     | BundleStartAction
-    | BundleCompleteAction;
+    | BundleCompleteAction
+    | LoadCodeStartAction
+    | LoadCodeCompleteAction
+    | LoginUserStartAction
+    | LoginUserCompleteAction
+    | LoginUserErrorAction
+    | LogoutUserStartAction
+    | LogoutUserCompleteAction
+    | LogoutUserErrorAction
+    | CheckIfLoggedInAction
+    | SaveCodeStartAction
+    | SaveCodeCompleteAction
+    | SaveCodeErrorAction;
