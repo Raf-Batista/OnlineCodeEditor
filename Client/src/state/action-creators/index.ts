@@ -26,7 +26,7 @@ export const moveCell = (id: string, direction: Direction): MoveCellAction => {
     return {
         type: ActionType.MOVE_CELL,
         payload: {
-            id,
+            id, 
             direction
         }
     };
@@ -89,8 +89,14 @@ export const saveCode = (code: {}, userId: number) => {
             localStorage.setItem('user', JSON.stringify(data));
 
             dispatch({
-                type: ActionType.SAVE_COMPLETE,
+                type: ActionType.SAVE_COMPLETE
             });
+
+            dispatch({
+                type: ActionType.LOGIN_USER_COMPLETE,
+                payload: data
+            });
+
         } catch (error) {
             console.log(error)
         }      
