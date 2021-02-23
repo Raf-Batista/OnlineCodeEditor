@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-const useForm = (initialValue = {}, callback: any) => {
+const useForm = (initialValue = {}, callback: any = () => {}) => {
     const [values, setValues] = useState(initialValue);
 
     const handleChange = ({ target }: any) => {
-        setValues((values) => ({
+        setValues((values: any) => ({
             ...values,
             [target.name]: target.value
         }))
