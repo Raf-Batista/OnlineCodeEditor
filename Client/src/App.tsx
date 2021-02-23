@@ -1,10 +1,9 @@
 //@ts-nocheck
 import React, { useState, useEffect } from 'react';
-import { Header, Navigation, CellList, Signup, Login, UserCodes } from "./components";
+import { Header, Navigation, CellList, Signup, Login, UserCodes, Save } from "./components";
 import { Route, Switch } from "react-router-dom";
 import { useActions } from './hooks/useActions';
 import { useTypedSelector } from './hooks/useTypedSelector';
-import logger from './state/middleware/logger';
 
 const App: React.FC = () => {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -28,13 +27,14 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Navigation loggedIn={loggedIn} setLoggedIn={setLoggedIn} save={saveCode} load={loadCode} userCode={userCode} userId={userId} />
+      <Navigation loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Header />
       <Switch>
         <Route exact path="/" component={CellList} />
         <Route exact path="/signup" render={(routeProps) => <Signup {...routeProps} loggedIn={loggedIn} /> } />
         <Route exact path="/login" render={(routeProps) => <Login {...routeProps} loggedIn={loggedIn} /> } />
-        <Route exact path="/codes" render={(routeProps) => <UserCodes {...routeProps}  user={loggedInUser} load={loadCode} /> } />
+        <Route exact path="/codes" render={(routeProps) => <UserCodes {...routeProps}  user={loggedInUser} load={loadCode} />} />
+        <Route exact path="/save" render={(routeProps) => <Save {...routeProps}  loggedIn={loggedIn} setLoggedIn={setLoggedIn} save={saveCode} userCode={userCode} userId={userId} /> } />
       </Switch>
     </>
   );
