@@ -2,8 +2,6 @@
 import "./Navigation.css";
 import { Link } from "react-router-dom";
 import { SyntheticEvent } from "react";
-import { logoutUser } from "../../state/action-creators";
-
 
 // interface NavigationProps {
 //   user: string
