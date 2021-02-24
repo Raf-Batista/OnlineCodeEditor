@@ -1,11 +1,12 @@
 import "./Header.css";
+import { testAttr } from '../../test-utils.js';
 
 const Header = () => {
   return (
-    <section id="header">
+    <section {...testAttr("component-header")} id="header">
       <div className="header">
-        <h1>Code and Markdown Editor</h1>
-        <a className="header-help button is-primary" href="#popup">
+        <h1 {...testAttr("component-header-title")}>Code and Markdown Editor</h1>
+        <a {...testAttr("component-header-help-button")} className="header-help button is-primary" href="#popup">
           Help
         </a>
         <div className="popup" id="popup">

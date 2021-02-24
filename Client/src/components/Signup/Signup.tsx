@@ -1,6 +1,6 @@
 // @ts-nocheck
-import React from 'react';
 import './Signup.css'
+import { testAttr } from '../../test-utils.js';
 import useForm from "../../hooks/useForm";
 import { useActions } from "../../hooks/useActions";
 import { Redirect, Link } from "react-router-dom";
@@ -20,7 +20,7 @@ const Signup: React.FC = ({ loggedIn }) => {
 
     return (
         <>
-          { !loggedIn ? <div className="form-wrapper">
+          { !loggedIn ? <div className="form-wrapper" {...testAttr("component-signup")}>
             <div className="form-wrapper-header">
               <h1>Signup</h1>
             </div>
