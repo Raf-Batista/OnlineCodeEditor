@@ -38,9 +38,30 @@ body::-webkit-scrollbar-track {
     }
 }
 
+.loading-spinner-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, .8);
+    z-index: 9999;
+    transition: opacity .2s;
+}
+
 .loading-spinner {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.loading-spinner-true {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loading-spinner-false {
+    opacity: 0;
+    visibility: hidden;
 }

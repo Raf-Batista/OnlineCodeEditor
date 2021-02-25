@@ -9,6 +9,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 const App: React.FC = () => {
     const [loggedIn, setLoggedIn] = useState(false);
+    const [showLoading, setShowLoading] = useState(false);
     const { checkIfLoggedIn, saveCode, loadCode, logoutUser } = useActions();
     const loggedInUser = useTypedSelector((state) => state.user);
     const {order, data} = useTypedSelector((state) => state.cells);
@@ -20,18 +21,21 @@ const App: React.FC = () => {
     const userId = user && JSON.parse(user).id
 
     useEffect(() => {
+      setShowLoading(isLoggingIn);
       const user = localStorage.getItem('user');
       if (user && !loggedIn) {
           setLoggedIn(true);
           checkIfLoggedIn(JSON.parse(user));
       } 
-    }, [checkIfLoggedIn, loggedInUser, loggedIn]);
+    }, [checkIfLoggedIn, loggedInUser, loggedIn, showLoading]);
 
 
   return (
     <>
-      <div className="loading-spinner">
-        <ClipLoader color={'white'} loading={isLoggingIn}  size={150} />
+      <div className={`loading-spinner-container loading-spinner-${isLoggingIn}`}>
+        <div className="loading-spinner">
+          <ClipLoader color={'white'} loading={true}  size={150} />
+        </div>
       </div>
       <Navigation loggedIn={loggedIn} setLoggedIn={setLoggedIn} logout={logoutUser} />
       <Header />
