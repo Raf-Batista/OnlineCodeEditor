@@ -34,7 +34,7 @@
 }
 
 .form-group input::-webkit-input-placeholder {
-    color: black;
+    color: darkgray;
 }
 
 .form-group input:focus {
