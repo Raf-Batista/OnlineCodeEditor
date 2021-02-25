@@ -5,12 +5,14 @@ import { Route, Switch } from "react-router-dom";
 import { useActions } from './hooks/useActions';
 import { useTypedSelector } from './hooks/useTypedSelector';
 import { ToastContainer } from "react-toastify";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const App: React.FC = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     const { checkIfLoggedIn, saveCode, loadCode, logoutUser } = useActions();
     const loggedInUser = useTypedSelector((state) => state.user);
     const {order, data} = useTypedSelector((state) => state.cells);
+    const { isLoggingIn } = useTypedSelector((state) => state.user);
     const userCode = {order: order, data: data};
 
     // Refactor this 
@@ -28,6 +30,9 @@ const App: React.FC = () => {
 
   return (
     <>
+      <div className="loading-spinner">
+        <ClipLoader color={'white'} loading={isLoggingIn}  size={150} />
+      </div>
       <Navigation loggedIn={loggedIn} setLoggedIn={setLoggedIn} logout={logoutUser} />
       <Header />
       <Switch>
