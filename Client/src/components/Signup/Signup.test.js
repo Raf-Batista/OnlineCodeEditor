@@ -1,4 +1,3 @@
-
 import * as redux from 'react-redux';
 import { shallow } from 'enzyme';
 import { findByTestAttr } from '../../test-utils';
