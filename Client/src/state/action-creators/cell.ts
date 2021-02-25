@@ -8,7 +8,6 @@ import {
 import { CellTypes } from "../cell";
 import { Direction } from "../direction";
 
-
 export const updateCell = (id: string, content: string): UpdateCellAction => {
     return {
       type: ActionType.UPDATE_CELL,
@@ -48,5 +47,4 @@ export const updateCell = (id: string, content: string): UpdateCellAction => {
       },
     };
   };
-  
   
