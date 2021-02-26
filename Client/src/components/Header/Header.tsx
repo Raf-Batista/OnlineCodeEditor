@@ -1,12 +1,24 @@
 import "./Header.css";
 import { testAttr } from '../../test-utils.js';
 
-const Header = () => {
+interface HeaderProps {
+  toggleTheme: () => {}
+}
+
+const Header: React.FC<HeaderProps> = ({ toggleTheme }) => {
+  
+  const handleClick = () => {
+    toggleTheme();
+  };
+
   return (
     <section {...testAttr("component-header")} id="header">
       <div className="header">
         <h1 {...testAttr("component-header-title")}>Code and Markdown Editor</h1>
-        <a {...testAttr("component-header-help-button")} className="header-help button is-primary" href="#popup">
+        <button {...testAttr("component-header-help-button")} className=" button is-primary  header-theme" onClick={handleClick}>
+          Theme
+        </button>
+        <a {...testAttr("component-header-help-button")} className="button is-primary header-help" href="#popup">
           Help
         </a>
         <div className="popup" id="popup">
