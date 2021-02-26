@@ -1,16 +1,21 @@
 .form-wrapper {
     position: relative;
-    background-color: #a1a4ac;
+    border: solid 2px var(--color-secondary);
     height: 500px;
     width: 700px;
     margin: 0 auto;
+}
+
+.form-wrapper h1 {
+    text-transform: uppercase;
+    font-weight: bolder;
 }
 
 .form-wrapper-header {
     text-align: center;
     font-size: 5rem;
     padding: 3rem;
-    color: white;
+    color: var(--font-color);
 }
 
 .form-group {
@@ -131,4 +136,8 @@
 .form-link span a {
     margin-left: .3rem;
     color: darkblue;
+}
+
+.form-wrapper span a {
+    color: #3c87aa;
 }

@@ -33,7 +33,7 @@ const Login: React.FC = ({ loggedIn }) => {
             name="username"
             onChange={handleChange}
             value={values.username}
-            placeholder="username"
+            placeholder="USERNAME"
           />
           <label className="form-group-label">Username</label>
           {/* @ts-ignore */}
@@ -46,7 +46,7 @@ const Login: React.FC = ({ loggedIn }) => {
             name="password"
             onChange={handleChange}
             value={values.password}
-            placeholder="password"
+            placeholder="PASSWORD"
           />
           <label className="form-group-label">Password</label>
           <div className="form-group-button">
