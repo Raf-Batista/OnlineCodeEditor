@@ -8,7 +8,16 @@ import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { store } from "./state";
 import { BrowserRouter as Router } from "react-router-dom";
+import { setTheme } from './scripts/theme-switcher';
 import App from "./App";
+
+(() => {
+  if (localStorage.getItem('theme') === 'theme-dark') {
+      setTheme('theme-dark');
+  } else {
+      setTheme('theme-light');
+  }
+})();
 
 const renderApp = () => {
   render(

@@ -6,6 +6,7 @@ import { useActions } from './hooks/useActions';
 import { useTypedSelector } from './hooks/useTypedSelector';
 import { ToastContainer } from "react-toastify";
 import ClipLoader from "react-spinners/ClipLoader";
+import { toggleTheme } from './scripts/theme-switcher';
 
 const App: React.FC = () => {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -38,7 +39,7 @@ const App: React.FC = () => {
         </div>
       </div>
       <Navigation loggedIn={loggedIn} setLoggedIn={setLoggedIn} logout={logoutUser} />
-      <Header />
+      <Header toggleTheme={toggleTheme} />
       <Switch>
         <Route exact path="/" component={CellList} />
         <Route exact path="/signup" render={(routeProps) => <Signup {...routeProps} loggedIn={loggedIn} /> } />
