@@ -39,7 +39,7 @@
 }
 
 .form-group input::-webkit-input-placeholder {
-    color: black;
+    color: darkgray;
 }
 
 .form-group input:focus {
@@ -61,7 +61,7 @@
     margin-bottom: 1rem;
     display: block;
     transition: all .3s;
-    color: black;
+    color: var(--font-color);
     text-transform: uppercase;
 }
 

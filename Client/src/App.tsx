@@ -28,7 +28,7 @@ const App: React.FC = () => {
           setLoggedIn(true);
           checkIfLoggedIn(JSON.parse(user));
       } 
-    }, [checkIfLoggedIn, loggedInUser, loggedIn, showLoading]);
+    }, [checkIfLoggedIn, loggedInUser, loggedIn, showLoading, isLoggingIn]);
 
 
   return (
