@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins ENV["CLIENT"]
+    origins  ENV["CLIENT"] || 'http://localhost:5000' # using env variable alone lead to Cors error
 
     resource '*',
       headers: :any,
