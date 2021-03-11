@@ -12,10 +12,10 @@ import { setTheme } from './scripts/theme-switcher';
 import App from "./App";
 
 (() => {
-  if (localStorage.getItem('theme') === 'theme-dark') {
-      setTheme('theme-dark');
-  } else {
+  if (localStorage.getItem('theme') === 'theme-light') {
       setTheme('theme-light');
+  } else {
+      setTheme('theme-dark');
   }
 })();
 
